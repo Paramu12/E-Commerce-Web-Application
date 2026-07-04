@@ -1,0 +1,46 @@
+import React from 'react'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { useNavigate } from 'react-router-dom'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+
+const About = () => {
+  const nav=useNavigate()
+    
+  return (
+   <div>
+     <h1 style={{color: "green"}}>About page</h1>
+     <button className="btn" onClick={() => nav("/contact")}>Go to contact</button>
+     <button className="btn" onClick={() => nav("/home")}>Go to home</button>
+      <button className="btn" onClick={() => nav("/sheet")}>Go to sheet</button>
+       <Button>Click me</Button>
+      <Carousel className="w-full max-w-[12rem] sm:max-w-xs">
+        <CarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselItem key={index}>
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <span className="text-4xl font-semibold">{index + 1}</span>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+   
+   </div>
+  )
+}
+
+export default About;
